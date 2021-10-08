@@ -5,10 +5,12 @@ ThisBuild / version := "0.1.0-SNAPSHOT"
 ThisBuild / organization := "com.github.swagger-akka-http"
 
 val akkaVersion = "2.6.16"
+val akkaHttpVersion = "10.2.6"
 val jacksonVersion = "2.13.0"
 val swaggerVersion = "2.1.11"
 
 val scala213 = "2.13.6"
+val slf4jVersion = "1.7.32"
 
 ThisBuild / scalaVersion := scala213
 ThisBuild / crossScalaVersions := Seq(scala213, "2.12.15")
@@ -20,7 +22,19 @@ lazy val root = (project in file("."))
     name := "swagger-akka-http-with-ui",
     libraryDependencies ++= Seq("com.github.swagger-akka-http" %% "swagger-akka-http" % "2.6.0",
       "org.webjars" % "webjars-locator" % "0.41",
-      "org.webjars" % "swagger-ui" % "3.50.0"),
+      "org.webjars" % "swagger-ui" % "3.50.0",
+      "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
+      "com.typesafe.akka" %% "akka-http-spray-json" % akkaHttpVersion % Test,
+      "com.typesafe.akka" %% "akka-http-testkit" % akkaHttpVersion % Test,
+      "org.scalatest" %% "scalatest" % "3.2.10" % Test,
+      "org.json4s" %% "json4s-native" % "4.0.3" % Test,
+      "org.jsoup" % "jsoup" % "1.14.3" % Test,
+      "jakarta.ws.rs" % "jakarta.ws.rs-api" % "3.0.0" % Test,
+      "joda-time" % "joda-time" % "2.10.12" % Test,
+      "org.joda" % "joda-convert" % "2.2.1" % Test,
+      "org.slf4j" % "slf4j-simple" % slf4jVersion % Test
+
+    ),
   )
 
 

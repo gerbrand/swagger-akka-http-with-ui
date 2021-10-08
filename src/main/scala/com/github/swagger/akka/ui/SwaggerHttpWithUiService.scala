@@ -6,6 +6,7 @@ import akka.http.scaladsl.model.{ContentTypes, HttpEntity}
 import akka.http.scaladsl.server.Route
 import akka.util.ByteString
 import com.github.swagger.akka.SwaggerHttpService
+import com.github.swagger.akka.SwaggerHttpService.{apiDocsBase, removeInitialSlashIfNecessary}
 import com.github.swagger.akka.ui.SwaggerHttpWithUiService.swaggerUiWebJar
 import org.webjars.{MultipleMatchesException, NotFoundException, WebJarAssetLocator}
 
@@ -64,20 +65,25 @@ trait SwaggerHttpWithUiService extends SwaggerHttpService {
    */
   def swaggerIndex(classLoader: ClassLoader = _defaultClassLoader): Future[HttpEntity.Strict] = {
     Future.fromTry(Try {
-      val fullPath = webJarAssetLocator.getFullPath(swaggerUiWebJar, "index.html")
-      val url = classLoader.getResource(fullPath)
-      /**
-       * Since the index.html from Swagger is relatively simple, we can get away with regular expressions.
-       * I wouldn't use regexp  for any generic html content.
-       */
-      val content = Source.fromURL(url).mkString
-        .replaceFirst("https://petstore.swagger.io/v2/swagger.json", s"/${apiDocsPath}/swagger.json") // Update url to the swagger file
+      val content: String = modifiedSwaggerDocsIndex(classLoader)
       HttpEntity.Strict(ContentTypes.`text/html(UTF-8)`, ByteString(content))
     })
   }
 
-  val swaggerUiRoute = {
-    pathPrefix(apiDocsPath) {
+  private def modifiedSwaggerDocsIndex(classLoader: ClassLoader = _defaultClassLoader): String = {
+    val fullPath = webJarAssetLocator.getFullPath(swaggerUiWebJar, "index.html")
+    val url = classLoader.getResource(fullPath)
+    /**
+     * Since the index.html from Swagger is relatively simple, we can get away with regular expressions.
+     * I wouldn't use regexp  for any generic html content.
+     */
+    val content = Source.fromURL(url).mkString
+      .replaceFirst("https://petstore.swagger.io/v2/swagger.json", s"swagger.json") // Update url to the swagger file
+    content
+  }
+
+  def swaggerUiRoute = {
+    pathPrefix(removeInitialSlashIfNecessary(apiDocsPath)) {
       webJars(swaggerUiWebJar, swaggerIndex())
     }
   }
@@ -85,7 +91,7 @@ trait SwaggerHttpWithUiService extends SwaggerHttpService {
   /**
    * Besides serving the swagger spec as json and yaml, the UI is also served.
    */
-  override val routes = super.routes ~ swaggerUiRoute
+  override def routes = super.routes ~ swaggerUiRoute
 }
 
 object SwaggerHttpWithUiService {
