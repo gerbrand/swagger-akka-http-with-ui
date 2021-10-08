@@ -3,6 +3,13 @@ Support for generating Swagger REST API documentation along with UI for Akka-Htt
 
 This module extends [swagger-akka-http](https://github.com/swagger-akka-http/swagger-akka-http) with the [Swagger-UI](https://github.com/swagger-api/swagger-ui) as [webjar](https://www.webjars.org).
 
+## Getting Swagger-Akka-Http
+
+### Release Version
+
+```sbt
+libraryDependencies += "com.github.swagger-akka-http" %% "swagger-akka-http" % "<release-version>"
+````
 ## SwaggerHttpWithUiService
 
 The `SwaggerHttpWithUiService` is a trait extending `SwaggerHttpService` which in turn is extending Akka-Http. It will generate the appropriate Swagger json schema based on a set of inputs declaring your Api and the types you want to expose.

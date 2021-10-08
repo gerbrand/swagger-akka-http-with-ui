@@ -1,8 +1,8 @@
 import sbt.Keys.libraryDependencies
 
-ThisBuild / scalaVersion := "2.12.8"
-ThisBuild / version := "0.1.0-SNAPSHOT"
-ThisBuild / organization := "com.github.swagger-akka-http"
+organization := "com.github.swagger-akka-http"
+
+name := "swagger-akka-http-with-ui"
 
 val akkaVersion = "2.6.16"
 val akkaHttpVersion = "10.2.6"
@@ -19,7 +19,6 @@ update / checksums := Nil
 
 lazy val root = (project in file("."))
   .settings(
-    name := "swagger-akka-http-with-ui",
     libraryDependencies ++= Seq("com.github.swagger-akka-http" %% "swagger-akka-http" % "2.6.0",
       "org.webjars" % "webjars-locator" % "0.41",
       "org.webjars" % "swagger-ui" % "3.50.0",
@@ -46,7 +45,7 @@ Test / parallelExecution := false
 
 pomIncludeRepository := { _ => false }
 
-homepage := Some(url("https://github.com/swagger-akka-http/swagger-akka-http"))
+homepage := Some(url("https://github.com/gerbrand/swagger-akka-http-with-ui"))
 
 licenses := Seq("The Apache Software License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
 
