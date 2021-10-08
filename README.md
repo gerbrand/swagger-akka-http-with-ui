@@ -7,9 +7,16 @@ This module extends [swagger-akka-http](https://github.com/swagger-akka-http/swa
 
 ### Release Version
 
-```sbt
-libraryDependencies += "com.github.swagger-akka-http" %% "swagger-akka-http" % "<release-version>"
-````
+This module is not yet published in any public repository. To use:
+
+* Check out this repository
+* Install [sbt](https://www.scala-sbt.org) if not already done so
+* build locally by executing
+    ```shell
+    sbt publishLocal
+    ```
+* Then add the dependency to your local project.
+
 ## SwaggerHttpWithUiService
 
 The `SwaggerHttpWithUiService` is a trait extending `SwaggerHttpService` which in turn is extending Akka-Http. It will generate the appropriate Swagger json schema based on a set of inputs declaring your Api and the types you want to expose.
