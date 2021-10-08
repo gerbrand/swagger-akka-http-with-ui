@@ -23,3 +23,5 @@ object SwaggerDocService extends SwaggerHttpWithUiService {
 ```
 
 For more information, see README of [swagger-akka-http](https://github.com/swagger-akka-http/swagger-akka-http).
+
+If you don't want to include a swagger UI, or want to include the static swagger-UI, use [swagger-akka-http](https://github.com/swagger-akka-http/swagger-akka-http) instead of this module.
