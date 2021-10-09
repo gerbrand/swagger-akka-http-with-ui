@@ -45,7 +45,7 @@ Test / parallelExecution := false
 
 pomIncludeRepository := { _ => false }
 
-homepage := Some(url("https://github.com/gerbrand/swagger-akka-http-with-ui"))
+homepage := Some(url("https://github.com/swagger-akka-http/swagger-akka-http-with-ui"))
 
 licenses := Seq("The Apache Software License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
 
