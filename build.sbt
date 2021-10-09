@@ -58,11 +58,10 @@ pomExtra := (
     </developer>
   </developers>)
 
-ThisBuild / githubWorkflowJavaVersions := Seq("adopt@1.8", "adopt@1.11", "adopt@1.16")
+ThisBuild / githubWorkflowJavaVersions := Seq("adopt@1.8", "adopt@1.11")
 ThisBuild / githubWorkflowTargetTags ++= Seq("v*")
 ThisBuild / githubWorkflowPublishTargetBranches := Seq(
   RefPredicate.Equals(Ref.Branch("main")),
-  RefPredicate.Equals(Ref.Branch("swagger-1.5")),
   RefPredicate.StartsWith(Ref.Tag("v"))
 )
 
