@@ -1,3 +1,6 @@
+![Build Status](https://github.com/swagger-akka-http/swagger-akka-http-with-ui/actions/workflows/ci.yml/badge.svg)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.swagger-akka-http/swagger-akka-http-with-ui_2.13/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.swagger-akka-http/swagger-akka-http-with-ui_2.13)
+
 # swagger-akka-http-with-ui
 Support for generating Swagger REST API documentation along with UI for Akka-Http based services.
 
