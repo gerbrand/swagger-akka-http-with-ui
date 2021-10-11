@@ -56,6 +56,11 @@ pomExtra := (
       <name>Gerbrand van Dieijen</name>
       <url>https://software-creation.nl</url>
     </developer>
+    <developer>
+      <id>pjfanning</id>
+      <name>PJ Fanning</name>
+      <url>https://github.com/pjfanning</url>
+    </developer>
   </developers>)
 
 ThisBuild / githubWorkflowJavaVersions := Seq("adopt@1.8", "adopt@1.11")
