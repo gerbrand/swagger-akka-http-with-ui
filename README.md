@@ -11,15 +11,20 @@ This module extends [swagger-akka-http](https://github.com/swagger-akka-http/swa
 
 ### Release Version
 
-This module is not yet published in any public repository. To use:
+The jars are hosted on [sonatype](https://oss.sonatype.org) and mirrored to [Maven Central](https://search.maven.org/search?q=g:com.github.swagger-akka-http). Snapshot releases are also hosted on sonatype.
 
-* Check out this repository
-* Install [sbt](https://www.scala-sbt.org) if not already done so
-* build locally by executing
-    ```shell
-    sbt publishLocal
-    ```
-* Then add the dependency to your local project.
+Version | Stability | Branch | Description
+--------|-----------|--------|------------
+2.6.x | stable | main | First release
+
+```sbt
+libraryDependencies += "com.github.swagger-akka-http" %% "swagger-akka-http-with-ui" % "<release-version>"
+```
+Swagger UI depends fully on **[swagger-akka-http](https://github.com/swagger-akka-http/swagger-akka-http)**. For more details on usage and background, see [README of swagger-akka-http](https://github.com/swagger-akka-http/swagger-akka-http/blob/main/README.md).
+
+## Examples
+
+[gerbrand/swagger-akka-http-with-ui-sample](https://github.com/gerbrand/swagger-akka-http-with-ui-sample) is a simple sample using this project.
 
 ## SwaggerHttpWithUiService
 
